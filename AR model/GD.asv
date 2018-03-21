@@ -1,0 +1,20 @@
+clear ; close all; clc
+
+%% ================ Linear Regression with Gradient Descent ================
+
+fprintf('Solving with normal equations...\n');
+
+format shortG
+
+%% Load Data
+%data = csvread('ex1data2.txt');
+load BlackRiverDaily;
+[data mu sigma] = featureNormalize(xx)
+X = xx(:,1:5);
+X = [ones(size(X,1),1) X];
+y = xx(:,6);
+b = regress(y,X)
+
+YFIT = X * b;
+
+mse(y,YFIT)
